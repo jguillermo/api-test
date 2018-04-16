@@ -4,11 +4,14 @@
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
-        "body-parser": "^1.18.2",
-        "express": "^4.16.3",
         "jest": "^22.4.3",
         "request": "^2.85.0",
         "request-promise-native": "^1.0.5"
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "^@request": "<rootDir>/e2e/request"
+        }
     },
     "scripts": {
         "test": "jest",
