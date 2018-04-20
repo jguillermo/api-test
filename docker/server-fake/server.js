@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const request = require('./request')
 
 // ============================
 //  Config
 // ============================
-process.env.PORT = process.env.PORT || 8056;
+process.env.PORT = process.env.PORT || 80;
 
 
 // parse application/x-www-form-urlencoded
@@ -96,11 +95,6 @@ app.delete('/user/:id', function(req, res) {
         message:`eliminado el usuario ${id}`
     });
 });
-
-app.get('/api-ext',async function(req,res){
-    let { body, statusCode } = await request('https://next.json-generator.com/api/json/get/4J4Y6xmnV');
-    res.json(body);
-})
 
 
 app.use(function(req, res, next){
