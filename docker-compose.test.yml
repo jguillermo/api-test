@@ -5,7 +5,19 @@ services:
     extends:
       file: docker-compose.yml
       service: server
+    networks:
+      - api-test-network
 
+  server-fake:
+    image: jguillermo/api-test:server-fake
+    ports:
+      - 80:80
+    networks:
+      api-test-network:
+        aliases:
+          - next.json-generator.com
+    volumes:
+      - ./app/intercepted-route:/app/intercepted-route
   # mysql:
   #   extends:
   #     file: docker-compose.yml
@@ -15,10 +27,14 @@ services:
     image: jguillermo/api-test:latest
     volumes:
       - ./app/e2e:/app/e2e
+    networks:
+      - api-test-network
     depends_on:
        - server
+       - server-fake
       #  - mysql
     command: "/tmp/wait-for-it.sh server:8056 -t 5 -- npm test"
 
-
-
+networks:
+  api-test-network:
+    driver: bridge
