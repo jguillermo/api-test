@@ -3,15 +3,18 @@ const rp = require('request-promise-native');
 async function request(url = '', method = 'GET', params = {}) {
     try {
         let res = await rp(getOptions(url, method, params));
+        console.log('********rest OK:',res);
         return parseResponse(res);
     }
     catch (error) {
+        console.log('********Error::',error);
         return parseResponse(error.response);
         //throw new ExceptionRequest(parseResponse(error.response));
     }
 }
 
 function parseResponse(res) {
+    console.log(res);
     return { body: res.body, statusCode: res.statusCode };
 }
 

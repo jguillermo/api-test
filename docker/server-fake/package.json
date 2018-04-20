@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Jose Guillermo",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3"

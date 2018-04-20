@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 // ============================
 //  Config
 // ============================
-process.env.PORT = process.env.PORT || 80;
+process.env.PORT = process.env.PORT || 443;
 
 
 // parse application/x-www-form-urlencoded
@@ -14,93 +14,36 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
-    res.json([{
-        url:'/user',
-        method:'GET'
-    },{
-        url:'/user/:id',
-        method:'GET'
-    },{
-        url:'/user',
-        method:'POST'
-    },{
-        url:'/user/:id',
-        method:'PUT'
-    },{
-        url:'/user/:id',
-        method:'DELETE'
-    }]);
-});
-
-app.get('/user', function(req, res) {
+app.get('/api/json/get/4J4Y6xmnV', function(req, res) {
     res.json([{
         id:1,
-        name:'Jose'
+        name:'Data'
     },{
         id:2,
-        name:'Ariana'
+        name:'fake'
     }]);
 });
-
-app.get('/user/:id', function(req, res) {
-    let id = req.params.id;
-    res.json({
-        id,
-        name:'Jose'
-    });
-});
-
-app.post('/user', function(req, res) {
-
-    let body = req.body;
-
-    if (body.name === undefined) {
-
-        res.status(400).json({
-            mensaje: 'El nombre es necesario'
-        });
-
-    } else {
-        res.status(201).json({
-            id:3,
-            name:body.name
-        });
-    }
-
-});
-
-app.put('/user/:id', function(req, res) {
-
-    let id = req.params.id;
-
-    let body = req.body;
-
-    if (body.name === undefined) {
-        res.status(400).json({
-            mensaje: 'El nombre es necesario'
-        });
-
-    } else {
-        res.json({
-            id,
-            name:body.name
-        });
-    }
-});
-
-app.delete('/user/:id', function(req, res) {
-    let id = req.params.id;
-    res.json({
-        message:`eliminado el usuario ${id}`
-    });
-});
-
-
-app.use(function(req, res, next){
-    res.status('404').json({ status: 404, url: req.url });
-  });
 
 app.listen(process.env.PORT, () => {
     console.log('Escuchando puerto: ', process.env.PORT);
 });
+
+
+
+// var fs = require('fs');
+// var http = require('http');
+// var https = require('https');
+// var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+// var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+
+// var credentials = {key: privateKey, cert: certificate};
+// var express = require('express');
+// var app = express();
+
+// // your express configuration here
+
+// var httpServer = http.createServer(app);
+// var httpsServer = https.createServer(credentials, app);
+
+// httpServer.listen(8080);
+// httpsServer.listen(8443);
