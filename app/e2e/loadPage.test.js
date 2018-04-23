@@ -17,3 +17,13 @@ test('carga de la pagina Error', async () => {
     expect(statusCode).toEqual(404);
     expect(body).toEqual({ status: 404, url: '//xcvxcvxcv' });
 });
+
+
+test('test carga de ruta externa', async () => {
+    let { body, statusCode } = await request('api-ext');
+    expect(statusCode).toEqual(200);
+    expect(body).toEqual([
+        { id: 1, name: 'DATOS' },
+        { id: 2, name: 'fake' }
+    ]);
+});

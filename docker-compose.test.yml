@@ -11,13 +11,13 @@ services:
   server-fake:
     image: jguillermo/api-test:server-fake
     ports:
-      - 80:80
+      - 8033:80
     networks:
       api-test-network:
         aliases:
           - next.json-generator.com
     volumes:
-      - ./app/intercepted-route:/app/intercepted-route
+      - ./docker/server-fake/intercepted-route:/app/intercepted-route
   # mysql:
   #   extends:
   #     file: docker-compose.yml

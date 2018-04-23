@@ -7,8 +7,9 @@ const https = require('https');
 var interceptedRoutes = require('./intercepted-route');
 
 
-//var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
-//var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+var privateKey  = fs.readFileSync('credencial/server.key', 'utf8');
+var certificate = fs.readFileSync('credencial/server.csr', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
