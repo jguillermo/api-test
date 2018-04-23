@@ -1,32 +1,32 @@
-const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const http = require('http');
+const express = require('express');
+const https = require('https');
 
-// ============================
-//  Config
-// ============================
-process.env.PORT = process.env.PORT || 443;
+//var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+//var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
 
 
-// parse application/x-www-form-urlencoded
+const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
 app.use(bodyParser.json());
 
 app.get('/api/json/get/4J4Y6xmnV', function(req, res) {
     res.json([{
         id:1,
-        name:'Data'
+        name:'DATOS'
     },{
         id:2,
         name:'fake'
     }]);
 });
 
-app.listen(process.env.PORT, () => {
-    console.log('Escuchando puerto: ', process.env.PORT);
-});
+var httpServer = http.createServer(app);
+//var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(80);
+//httpsServer.listen(443);
 
 
 

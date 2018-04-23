@@ -98,7 +98,7 @@ app.delete('/user/:id', function(req, res) {
 });
 
 app.get('/api-ext',async function(req,res){
-    let { body, statusCode } = await request('https://next.json-generator.com/api/json/get/4J4Y6xmnV');
+    let { body, statusCode } = await request('http://next.json-generator.com/api/json/get/4J4Y6xmnV');
     res.json(body);
 })
 
