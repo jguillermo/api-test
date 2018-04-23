@@ -16,7 +16,8 @@ services:
       api-test-network:
         aliases:
           - next.json-generator.com
-
+    volumes:
+      - ./app/intercepted-route:/app/intercepted-route
   # mysql:
   #   extends:
   #     file: docker-compose.yml

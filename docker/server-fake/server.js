@@ -4,6 +4,9 @@ const http = require('http');
 const express = require('express');
 const https = require('https');
 
+var interceptedRoutes = require('./intercepted-route');
+
+
 //var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
 //var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
 
@@ -11,15 +14,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-app.get('/api/json/get/4J4Y6xmnV', function(req, res) {
-    res.json([{
-        id:1,
-        name:'DATOS'
-    },{
-        id:2,
-        name:'fake'
-    }]);
-});
+// Import my test routes into the path '/test'
+app.use('/', interceptedRoutes);
+
 
 var httpServer = http.createServer(app);
 //var httpsServer = https.createServer(credentials, app);
@@ -40,5 +37,5 @@ httpServer.listen(80);
 // // your express configuration here
 // var httpServer = http.createServer(app);
 // var httpsServer = https.createServer(credentials, app);
-// httpServer.listen(8080);
-// httpsServer.listen(8443);
+// httpServer.listen(80);
+// httpsServer.listen(443);
