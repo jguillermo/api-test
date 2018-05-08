@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
+    "author": "Jose Guillermo",
     "dependencies": {
         "jest": "^22.4.3",
         "request": "^2.85.0",
@@ -14,7 +15,8 @@
         }
     },
     "scripts": {
-        "test": "jest",
+        "test": "jest --runInBand",
+        "tst": "jest",
         "start": "node server"
     }
 }

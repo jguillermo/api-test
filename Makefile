@@ -5,11 +5,11 @@ PROJECT_NAME = graphql
 CONTAINER_NAME = server
 
 test: ## Test project
-	docker-compose -f docker-compose.test.yml down
 	docker-compose -f docker-compose.test.yml run --rm test
 
-test-ligth: ## Test project
-	docker-compose -f docker-compose.test.yml run --rm test
+test-restart: ## Test project
+	docker-compose -f docker-compose.test.yml down
+	make test
 
 build:
 	docker build -t jguillermo/api-test:latest ./docker/node

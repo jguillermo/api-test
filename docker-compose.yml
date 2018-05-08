@@ -6,11 +6,11 @@ services:
       ports:
         - 8056:8056
 
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: toor
-      MYSQL_USER : root
-      MYSQL_DATABASE: dbproject
-    ports:
-      - 3306:3306
+  # mysql:
+  #   image: mysql:5.7
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: toor
+  #     MYSQL_USER : root
+  #     MYSQL_DATABASE: dbproject
+  #   ports:
+  #     - 3306:3306
