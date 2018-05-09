@@ -46,5 +46,10 @@ function ExceptionRequest(data) {
 ExceptionRequest.prototype = Object.create(Error.prototype);
 ExceptionRequest.prototype.constructor = ExceptionRequest;
 
+function sleep(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
+}
 
 module.exports = request;

@@ -15,7 +15,7 @@
         }
     },
     "scripts": {
-        "test": "jest --runInBand",
+        "test": "jest --runInBand --verbose",
         "tst": "jest",
         "start": "node server"
     }
