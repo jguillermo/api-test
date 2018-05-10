@@ -6,12 +6,14 @@
     "author": "Jose Guillermo",
     "dependencies": {
         "jest": "^22.4.3",
+        "mysql": "^2.15.0",
         "request": "^2.85.0",
         "request-promise-native": "^1.0.5"
     },
     "jest": {
         "moduleNameMapper": {
-            "^@request": "<rootDir>/e2e/request"
+            "^@request": "<rootDir>/e2e/request",
+            "^@mysql": "<rootDir>/e2e/request/mysql"
         }
     },
     "scripts": {

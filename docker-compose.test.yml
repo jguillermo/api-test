@@ -18,10 +18,13 @@ services:
           - next.json-generator.com
     volumes:
       - ./docker/server-fake/intercepted-route:/app/intercepted-route
-  # mysql:
-  #   extends:
-  #     file: docker-compose.yml
-  #     service: mysql
+
+  mysql:
+    extends:
+      file: docker-compose.yml
+      service: mysql
+    networks:
+      - api-test-network
 
   test:
     image: jguillermo/api-test:latest
@@ -30,10 +33,10 @@ services:
     networks:
       - api-test-network
     depends_on:
+       - mysql
        - server
        - server-fake
-      #  - mysql
-    command: "/tmp/wait-for-it.sh server:8056 -t 5 -- npm test"
+    command: "/tmp/wait-for-it.sh mysql:3306 -t 50 -- npm test"
 
 networks:
   api-test-network:
