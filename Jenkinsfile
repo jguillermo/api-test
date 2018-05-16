@@ -26,6 +26,9 @@ pipeline {
     }
   }
   post {
+    always {
+      cleanWs()
+    }
     success {
       sh '''
         echo "FIN SUCCESS"
