@@ -26,9 +26,6 @@ pipeline {
     }
   }
   post {
-    always(dir) {
-      cleanWS
-    }
     success {
       sh '''
         echo "FIN SUCCESS"
